@@ -61,3 +61,26 @@ explicit = true
 [tool.uv.sources]
 torch = { index = "pytorch-cpu" }
 torchaudio = { index = "pytorch-cpu" }
+
+[tool.pyright]
+typeCheckingMode = "basic"
+include = ["src", "tests"]
+venvPath = "."
+venv = ".venv"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+markers = [
+    "slow: long-running tests (deselect with '-m \"not slow\"')",
+    "gpu: tests that require a CUDA GPU",
+    "hardware: tests that require the STM32 board or other hardware",
+]
+
+[tool.coverage.run]
+source = ["master_th"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+skip_empty = true

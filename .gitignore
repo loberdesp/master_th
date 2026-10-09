@@ -8,3 +8,10 @@ __pycache__/
 .pytest_cache/
 *.pt
 *.ckpt
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+.ipynb_checkpoints/
+*.flac
+*.onnx
