@@ -8,12 +8,16 @@ authors = [
 ]
 requires-python = ">=3.12"
 dependencies = [
+    "auraloss>=0.4.0",
     "matplotlib>=3.11.2",
     "numpy>=2.5.3",
     "pyyaml>=6.0.3",
     "scipy>=1.18.1",
     "soundfile>=0.14.0",
+    "tensorboard>=2.21.0",
     "torch>=2.14.1",
+    "torchaudio>=2.11.0",
+    "tqdm>=4.70.1",
 ]
 
 [project.scripts]
@@ -25,8 +29,13 @@ build-backend = "uv_build"
 
 [dependency-groups]
 dev = [
+    "ipykernel>=7.4.0",
+    "nbstripout>=0.9.1",
     "pre-commit>=4.6.2",
+    "pyright>=1.1.414",
     "pytest>=9.1.1",
+    "pytest-cov>=7.1.0",
+    "pytest-xdist>=3.8.0",
     "ruff>=0.17.0",
 ]
 
@@ -41,3 +50,14 @@ ignore = ["E501"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/*" = ["B011"]
+
+# Torch comes from the CPU-only PyTorch index (no NVIDIA GPU locally; CI is CPU).
+# To use CUDA later, point these sources at e.g. https://download.pytorch.org/whl/cu130.
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cpu" }
+torchaudio = { index = "pytorch-cpu" }
