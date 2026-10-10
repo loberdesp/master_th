@@ -10,5 +10,22 @@
   },
   "python.testing.pytestEnabled": true,
   "python.testing.unittestEnabled": false,
-  "python.testing.pytestArgs": ["tests"]
+  "python.testing.pytestArgs": ["tests"],
+  "python.analysis.diagnosticMode": "openFilesOnly",
+  "python.analysis.indexing": true,
+  "python.analysis.packageIndexDepths": [
+    { "name": "torch", "depth": 1 },
+    { "name": "torchaudio", "depth": 1 },
+    { "name": "tensorboard", "depth": 1 },
+    { "name": "scipy", "depth": 2 },
+    { "name": "matplotlib", "depth": 2 }
+  ],
+  "files.watcherExclude": {
+    "**/.venv/**": true,
+    "**/.ruff_cache/**": true,
+    "**/.pytest_cache/**": true,
+    "**/__pycache__/**": true,
+    "**/data/**": true,
+    "**/runs/**": true
+  }
 }

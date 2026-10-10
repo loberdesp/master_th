@@ -16,4 +16,6 @@ htmlcov/
 *.flac
 *.onnx
 docs/thesis.md
+docs/steps.md
 CLAUDE.md
+.claude/
